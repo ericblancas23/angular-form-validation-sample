@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <form [formGroup]="userEmails">
+
+	<h3>Please provide your email addresses</h3>
+
+	<div class="form-group">
+  	<label>Primary Email:</label>
+  	<input [class.is-invalid]="primEmail.invalid && primEmail.touched" type="email" class="form-control"
+    	formControlName="primaryEmail" />
+
+  	<div *ngIf="(primEmail.invalid && primEmail.touched) || primEmail.dirty">
+    	<small *ngIf="primEmail.errors?.required" class="text-danger">Primary email is required</small>
+    	<!--question mark(?) is a safe navigation operator-->
+    	<small *ngIf="primEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+  	</div>
+
+	</div>
+
+	<div class="form-group">
+  	<label>Secondary Email:</label>
+  	<input [class.is-invalid]="secondEmail.invalid && secondEmail.touched" type="email" class="form-control"
+    	formControlName="secondaryEmail" />
+
+  	<div *ngIf="(secondEmail.invalid && secondEmail.touched) || secondEmail.dirty">
+    	<small *ngIf="secondEmail.errors?.required" class="text-danger">Secondary email is required</small>
+    	<small *ngIf="secondEmail.errors?.pattern" class="text-danger">Please provide a valid email address</small>
+  	</div>
+
+	</div>
+
+  </form>
+
+</div>
